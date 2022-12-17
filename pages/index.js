@@ -42,7 +42,7 @@ const Home = () => {
             <h1>TLDR</h1>
           </div>
           <div className="header-subtitle">
-            <h2>Write the name of a book and the author like: Atomic Habits by James Clear and get the value from the book</h2>
+            <h2>Write the name of a book and the author to get the most valuable points and lessons from it!</h2>
           </div>
         </div>
 
