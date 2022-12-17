@@ -1,3 +1,9 @@
+export const config = {
+    runtime: 'experimental-edge',
+}
+
+// --------------------------------------------------------------
+
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
