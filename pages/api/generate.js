@@ -26,19 +26,26 @@ async function generateCompletions(prompt, model) {
 
     const response = await fetch('https://api.openai.com/v1/completions', options);
 
+    const rsp = await response.json();
+    console.log(`response: ${response.ok} - ${JSON.stringify(rsp)}`);
+
     if (response.ok) {
-        const data = await response.json();
+        const data = rsp;
         return data.choices.pop();
     } else {
+        console.log(`it's a request error`);
         throw new Error(response.statusText);
     }
 }
 
-export default async function (req) {
+export default async function handler(req) {
+    const { searchParams } = new URL(req.url);
+    const prompt = searchParams.get('prompt');
 
-    const { searchParams } = new URL(req.url)
-    const prompt = searchParams.get('prompt')
-    const completions = await generateCompletions(`${basePromptPrefix}${prompt}`, "text-davinci-003");
+    const completions = await generateCompletions(
+        `${basePromptPrefix}${prompt}`, 
+        "text-davinci-003"
+    );
 
     return new Response(
         JSON.stringify({ output: completions }),
