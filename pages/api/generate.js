@@ -2,9 +2,9 @@ export const config = {
     runtime: 'experimental-edge',
 }
 
-const configuration = new Configuration({
+const configuration = {
     apiKey: process.env.OPENAI_API_KEY,
-})
+};
 
 const basePromptPrefix = "Give me the key points, lessons and action points of the following book. Please separate each section and explain each point with examples in a separate sentence  in the style of naval ravikan. Don't limit yourself in the amount of points and lessons given: ";
 
